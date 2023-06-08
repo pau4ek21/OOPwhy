@@ -1,6 +1,10 @@
+import java.util.Iterator;
 import java.util.LinkedList;
 
-public class HotVendingMachine implements VendingMachine {
+
+public class HotVendingMachine implements VendingMachine, Iterable<Product> {
+    private LinkedList<Product> hotWater;
+
     @Override
     public void putProduct(LinkedList<Product> item) {
 
@@ -22,4 +26,13 @@ public class HotVendingMachine implements VendingMachine {
         System.out.println("Получен продукт по имени " + name + ", объему " + volume + " и температуре " + temperature);
     }
 
+
+    public void getProduct(String name, int volume, int temperature) {
+        System.out.println("Получен продукт по имени " + name + ", объему " + volume + " и температуре " + temperature);
+    }
+
+    @Override
+    public Iterator<Product> iterator() {
+        return new HotWaterIterator(hotWater);
+    }
 }
